@@ -47,7 +47,7 @@ public class Movimiento {
   public void agregateA(Cuenta cuenta) {
     cuenta.setSaldo(calcularValor(cuenta));
     cuenta.agregarMovimiento(fecha, monto, esDeposito);
-  }
+  } // movimiento no deberia implementar nada de cuenta solo la deberia llamar para que cuenta lo haga.
 
   public double calcularValor(Cuenta cuenta) {
     if (esDeposito) {

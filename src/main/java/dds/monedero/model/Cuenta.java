@@ -49,14 +49,14 @@ public class Cuenta {
 
   public void agregarMovimiento(LocalDate fecha, double cuanto, boolean esDeposito) {
     Movimiento movimiento = new Movimiento(fecha, cuanto, esDeposito);
-    movimientos.add(movimiento);
+    movimientos.add(movimiento); // no esta bien administrada la responsabilidad cuenta no deberia agregar movimientos deberia llamar a movimiento para que se agregue solo
   }
 
   public double getMontoExtraidoA(LocalDate fecha) {
     return getMovimientos().stream()
         .filter(movimiento -> !movimiento.isDeposito() && movimiento.getFecha().equals(fecha))
         .mapToDouble(Movimiento::getMonto)
-        .sum();
+        .sum(); // no esta bien administrada la responsabilidad cuenta no deberia preguntarle a movimiento cuanto se extrae deberia preguntarle a movimiento cuanto se extrae en una fecha
   }
 
   public List<Movimiento> getMovimientos() {
